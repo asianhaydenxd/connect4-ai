@@ -42,6 +42,12 @@ function Board() {
     }
 }
 
+function onColumnClick(game, x) {
+    game.drop(x);
+    game.swapTurn();
+    generateBoard(game, width, height);
+}
+
 function generateBoard(game, width, height) {
     const board = document.getElementById("board");
 
@@ -57,6 +63,8 @@ function generateBoard(game, width, height) {
             const cell = document.createElement("div");
             cell.className = "cell";
             cell.slot = game.board.array[rowNumber][cellNumber]
+
+            cell.addEventListener("click", () => onColumnClick(game, cellNumber));
 
             row.appendChild(cell);
         }
