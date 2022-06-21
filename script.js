@@ -9,6 +9,15 @@ const Slot = {
 
 function Game() {
     this.board = new Board();
+    this.turn = Slot.Player1;
+
+    this.swapTurn = function() {
+        this.turn = this.turn == Slot.Player1 ? Slot.Player2 : Slot.Player1;
+    }
+
+    this.drop = function(x) {
+        this.board.drop(this.turn, x);
+    }
 }
 
 function Board() {
