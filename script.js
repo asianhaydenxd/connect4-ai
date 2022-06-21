@@ -12,13 +12,11 @@ modeToggle.onclick = function() {
 }
 
 function onColumnClick(game, x) {
-    game.drop(x);
-    game.swapTurn();
+    game.play(x);
     generateBoard(game, width, height);
     
     if (modeToggle.ai) {
-        game.drop(bestColumn(game));
-        game.swapTurn();
+        game.play(bestColumn(game));
         generateBoard(game, width, height);
     }
 }

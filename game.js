@@ -15,6 +15,16 @@ export function Game(width, height) {
     this.drop = function(x) {
         this.board.drop(this.turn, x);
     }
+
+    this.play = function(x) {
+        try {
+            this.drop(x);
+            this.swapTurn();
+        }
+        catch (RangeError) {
+            console.log("Column full");
+        }
+    }
 }
 
 function Board(width, height) {
