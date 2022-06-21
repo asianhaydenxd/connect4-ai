@@ -7,8 +7,8 @@ const Slot = {
     Player2: "Player2",
 }
 
-function Game() {
-    this.board = new Board();
+function Game(width, height) {
+    this.board = new Board(width, height);
     this.turn = Slot.Player1;
 
     this.swapTurn = function() {
@@ -20,7 +20,7 @@ function Game() {
     }
 }
 
-function Board() {
+function Board(width, height) {
     this.array = new Array(height).fill(null).map( () => new Array(width).fill(Slot.Empty) );
 
     this.put = function(slot, x, y) {
@@ -77,7 +77,7 @@ function generateBoard(game, width, height) {
     }
 }
 
-const game = new Game();
+const game = new Game(width, height);
 
 console.table(game.board.array);
 
