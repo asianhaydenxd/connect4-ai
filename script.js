@@ -42,7 +42,7 @@ function generateBoard(game, width, height) {
 
         for (let cellNumber = 0; cellNumber < width; cellNumber++) {
             const cell = document.createElement("div");
-            cell.className = 'cell';
+            cell.className = "cell";
             cell.slot = game.board[rowNumber][cellNumber]
 
             row.appendChild(cell);
