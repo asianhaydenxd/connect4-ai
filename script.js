@@ -7,7 +7,7 @@ const Slot = {
     Player2: "Player2",
 }
 
-function Game() {
+function Board() {
     this.board = new Array(height).fill(null).map( () => new Array(width).fill(Slot.Empty) );
 
     this.put = function(slot, x, y) {
@@ -52,7 +52,7 @@ function generateBoard(game, width, height) {
     }
 }
 
-const game = new Game();
+const game = new Board();
 
 console.table(game.board);
 
