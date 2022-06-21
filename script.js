@@ -1,5 +1,3 @@
-// document.createElement("")
-
 const width = 7;
 const height = 6;
 
