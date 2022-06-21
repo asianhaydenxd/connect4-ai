@@ -25,6 +25,12 @@ export function Game(width, height) {
             console.log("Column full");
         }
     }
+
+    this.copy = function() {
+        const newGame = new Game(width, height);
+        newGame.board.array = this.board.array.map( (row) => row.map( (cell) => cell ) );
+        return newGame;
+    }
 }
 
 function Board(width, height) {
