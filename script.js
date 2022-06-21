@@ -7,19 +7,23 @@ const Slot = {
     Player2: "Player2",
 }
 
+function Game() {
+    this.board = new Board();
+}
+
 function Board() {
-    this.board = new Array(height).fill(null).map( () => new Array(width).fill(Slot.Empty) );
+    this.array = new Array(height).fill(null).map( () => new Array(width).fill(Slot.Empty) );
 
     this.put = function(slot, x, y) {
-        this.board[y][x] = slot;
+        this.array[y][x] = slot;
     }
 
     this.get = function(x, y) {
-        return this.board[y][x];
+        return this.array[y][x];
     }
 
     this.drop = function(slot, x) {
-        let dropHeight = this.board.length - 1;
+        let dropHeight = this.array.length - 1;
         
         while (dropHeight >= 0 && this.get(x, dropHeight) != Slot.Empty) {
             dropHeight--;
@@ -43,7 +47,7 @@ function generateBoard(game, width, height) {
         for (let cellNumber = 0; cellNumber < width; cellNumber++) {
             const cell = document.createElement("div");
             cell.className = "cell";
-            cell.slot = game.board[rowNumber][cellNumber]
+            cell.slot = game.board.array[rowNumber][cellNumber]
 
             row.appendChild(cell);
         }
@@ -52,9 +56,9 @@ function generateBoard(game, width, height) {
     }
 }
 
-const game = new Board();
+const game = new Game();
 
-console.table(game.board);
+console.table(game.board.array);
 
 
 generateBoard(game, width, height);
