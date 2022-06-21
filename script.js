@@ -38,6 +38,10 @@ function Board() {
             dropHeight--;
         }
 
+        if (dropHeight < 0) {
+            throw RangeError(`Cannot find room in column ${x} to stack slot ${slot}`);
+        }
+
         this.put(slot, x, dropHeight);
     }
 }
