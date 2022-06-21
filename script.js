@@ -3,6 +3,13 @@ import { Game } from "./game.js"
 const width = 7;
 const height = 6;
 
+const modeToggle = document.getElementById("mode")
+
+modeToggle.onclick = function() {
+    this.ai = !this.ai;
+    this.innerHTML = this.ai ? "Mode: AI" : "Mode: Multiplayer";
+}
+
 function onColumnClick(game, x) {
     game.drop(x);
     game.swapTurn();
