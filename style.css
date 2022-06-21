@@ -1,0 +1,50 @@
+:root {
+    --color-outline: black;
+    --color-empty: white;
+    --color-player1: red;
+    --color-player2: yellow;
+    --square-size: 100px;
+    --outline-width: 5px;
+}
+
+* {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px;
+}
+
+#board {
+    width: fit-content;
+    background-color: var(--color-outline);
+    padding: var(--outline-width);
+}
+
+.row {
+    line-height: 0px;
+}
+
+.cell {
+    width: var(--square-size);
+    height: var(--square-size);
+    margin: var(--outline-width);
+    display: inline-block;
+}
+
+.cell[slot="Empty"] {
+    background-color: var(--color-empty);
+}
+
+.cell[slot="Player1"]{
+    background-color: var(--color-player1);
+}
+
+.cell[slot="Player2"]{
+    background-color: var(--color-player2);
+}
