@@ -9,8 +9,13 @@ const Slot = {
 
 function Game() {
     this.board = new Array(height).fill(null).map( () => new Array(width).fill(Slot.Empty) );
+
     this.put = function(slot, x, y) {
         this.board[y][x] = slot;
+    }
+
+    this.get = function(x, y) {
+        return this.board[y][x];
     }
 }
 
