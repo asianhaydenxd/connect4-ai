@@ -17,6 +17,16 @@ function Game() {
     this.get = function(x, y) {
         return this.board[y][x];
     }
+
+    this.drop = function(slot, x) {
+        let dropHeight = this.board.length - 1;
+        
+        while (dropHeight >= 0 && this.get(x, dropHeight) != Slot.Empty) {
+            dropHeight--;
+        }
+
+        this.put(slot, x, dropHeight);
+    }
 }
 
 function generateBoard(game, width, height) {
@@ -44,7 +54,6 @@ function generateBoard(game, width, height) {
 
 const game = new Game();
 
-game.put(Slot.Player1, 0, 5); // Place a red piece at coords (0, 5)
 console.table(game.board);
 
 
