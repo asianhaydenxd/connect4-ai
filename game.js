@@ -77,4 +77,18 @@ function Board(width, height) {
 
         this.put(slot, x, dropHeight);
     }
+
+    this.getDepth = function(x) {
+        let dropHeight = this.array.length - 1;
+        
+        while (dropHeight >= 0 && this.get(x, dropHeight) != Slot.Empty) {
+            dropHeight--;
+        }
+
+        if (dropHeight < 0) {
+            throw RangeError(`Cannot find room in column ${x} to stack slot ${slot}`);
+        }
+
+        return dropHeight;
+    }
 }
