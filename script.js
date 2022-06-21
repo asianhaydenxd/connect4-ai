@@ -1,4 +1,5 @@
 import { Game } from "./game.js"
+import { bestColumn } from "./ai.js"
 
 const width = 7;
 const height = 6;
@@ -14,6 +15,12 @@ function onColumnClick(game, x) {
     game.drop(x);
     game.swapTurn();
     generateBoard(game, width, height);
+    
+    if (modeToggle.ai) {
+        game.drop(bestColumn(game));
+        game.swapTurn();
+        generateBoard(game, width, height);
+    }
 }
 
 function generateBoard(game, width, height) {
