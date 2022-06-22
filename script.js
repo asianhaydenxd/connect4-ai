@@ -1,10 +1,11 @@
 import { Game } from "./game.js"
-import { bestColumn } from "./ai.js"
+import { bestColumn, evaluate } from "./ai.js"
 
 const width = 7;
 const height = 6;
 
 const modeToggle = document.getElementById("mode")
+modeToggle.ai = true;
 
 modeToggle.onclick = function() {
     this.ai = !this.ai;
@@ -18,6 +19,10 @@ function onColumnClick(game, x) {
     if (modeToggle.ai) {
         game.play(bestColumn(game));
         generateBoard(game, width, height);
+    }
+
+    if (game.getWinner()) {
+        console.log(`Winner: ${game.getWinner()}`);
     }
 }
 
@@ -47,8 +52,6 @@ function generateBoard(game, width, height) {
 }
 
 const game = new Game(width, height);
-
-console.table(game.board.array);
 
 
 generateBoard(game, width, height);

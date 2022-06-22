@@ -1,4 +1,4 @@
-const Slot = {
+export const Slot = {
     Empty: "Empty",
     Player1: "Player1",
     Player2: "Player2",
@@ -14,6 +14,12 @@ export function Game(width, height) {
 
     this.drop = function(x) {
         this.board.drop(this.turn, x);
+        return this;
+    }
+
+    this.dropSlot = function(slot, x) {
+        this.board.drop(slot, x);
+        return this
     }
 
     this.play = function(x) {
